@@ -56,3 +56,4 @@ C:\repos\Library\src\HomeLibrary\obj\Debug\net8.0-windows\refint\HomeLibrary.dll
 C:\repos\Library\src\HomeLibrary\obj\Debug\net8.0-windows\HomeLibrary.pdb
 C:\repos\Library\src\HomeLibrary\obj\Debug\net8.0-windows\HomeLibrary.genruntimeconfig.cache
 C:\repos\Library\src\HomeLibrary\obj\Debug\net8.0-windows\ref\HomeLibrary.dll
+C:\repos\Library\src\HomeLibrary\obj\Debug\net8.0-windows\HomeLibrary.sourcelink.json

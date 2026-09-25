@@ -198,14 +198,24 @@ BEGIN
         THROW 50001, N'Название и автор книги обязательны и не могут быть пустыми.', 1;
     END;
 
-    -- Год издания: разумный диапазон (если указан)
+    -- Год издания: обязателен для указания (поле не может быть NULL)
     IF EXISTS (
         SELECT 1 FROM inserted
-        WHERE PublishYear IS NOT NULL AND (PublishYear < 1000 OR PublishYear > 2100)
+        WHERE PublishYear IS NULL
     )
     BEGIN
         ROLLBACK TRANSACTION;
-        THROW 50002, N'Год издания должен быть в диапазоне 1000–2100.', 1;
+        THROW 50002, N'Год издания обязателен для указания.', 1;
+    END;
+
+    -- Год издания: разумный диапазон (в т.ч. отсекает 0, введённый "как есть")
+    IF EXISTS (
+        SELECT 1 FROM inserted
+        WHERE PublishYear < 1000 OR PublishYear > 2100
+    )
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50005, N'Год издания должен быть в диапазоне 1000–2100.', 1;
     END;
 
     -- ISBN: только цифры, латинская X/x, дефисы и пробелы (если указан)

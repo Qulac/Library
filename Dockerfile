@@ -19,8 +19,7 @@ ENV ACCEPT_EULA=Y \
     MSSQL_SA_PASSWORD=YourStrong!Pass1
 
 # Идемпотентный скрипт инициализации: БД HomeLibrary, таблица Books,
-# индексы (включая XML), хранимые процедуры insert/update/delete/select/search
-# и триггеры валидации полей книги
+# индексы (включая XML) и хранимые процедуры insert/update/delete/select/search
 COPY db/init.sql /mssql-server-setup-scripts.d/init.sql
 
 # Файл мог быть создан в Windows — убираем CRLF
